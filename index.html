@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Rank Reality Projects</title>
+    <!-- Favicon -->
+    <link rel="icon" href="pp.png" type="image/png">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+            flex-direction: column;
+        }
+
+        .title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ffdd57;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .rank {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .rank:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .rank h2 {
+            margin: 0;
+            font-size: 1.8em;
+            color: #ffdd57;
+            flex: 1 1 auto;
+        }
+
+        .rank .price-menu {
+            font-size: 1em;
+            background: #ffdd57;
+            color: #203a43;
+            padding: 5px 10px;
+            border-radius: 5px;
+            flex: 0 0 auto;
+            margin-left: 10px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        /* Pop-up Price Options */
+        .price-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffdd57;
+            color: #203a43;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .price-popup span {
+            display: block;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .price-popup span:hover {
+            background: #ffd700;
+        }
+
+        .rank p {
+            margin: 10px 0 0;
+            display: none;
+            color: #fffbf0;
+            transition: max-height 0.3s ease;
+            overflow: hidden;
+            line-height: 1.5;
+            width: 100%;
+        }
+
+        .rank.active p {
+            display: block;
+        }
+
+        footer {
+            background: transparent;
+            padding: 10px;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+        }
+
+        /* Discord Floating Button */
+        .discord-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 1001;
+            animation: bounce 2s infinite;
+        }
+
+        .discord-button img {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .discord-button img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="title">REALITY PROJECTS</div>
+    <div class="container">
+        <div class="rank" onclick="toggleDetails(this)">
+            <h2>🎁 AQUANUTS</h2>
+            <div class="price-menu" onclick="showPricePopup(event, 'AQUANUTS', ['10K (Permanen)', '5K (1 Bulan)'])">
+                Harga
+            </div>
+            <p>6 Home<br>100K Money<br>10K Claim<br>3 Jobs & Quest<br>/feed</p>
+        </div>
+        <div class="rank" onclick="toggleDetails(this)">
+            <h2>🎁 ATLAS</h2>
+            <div class="price-menu" onclick="showPricePopup(event, 'ATLAS', ['20K (Permanen)', '10K (1 Bulan)'])">
+                Harga
+            </div>
+            <p>8 Home<br>150K Money<br>12K Claim<br>3x Jobs & Quest<br>/feed<br>/heal<br>/craft</p>
+        </div>
+        <div class="rank" onclick="toggleDetails(this)">
+            <h2>🎁 SERPENT</h2>
+            <div class="price-menu" onclick="showPricePopup(event, 'SERPENT', ['30K (Permanen)', '15K (1 Bulan)'])">
+                Harga
+            </div>
+            <p>12 Home<br>250K Money<br>15K Claim Block<br>5x Jobs & Quest<br>/feed<br>/heal<br>/craft<br>/fly<br>/nick</p>
+        </div>
+        <div class="rank" onclick="toggleDetails(this)">
+            <h2>🎁 LEVIATHAN</h2>
+            <div class="price-menu" onclick="showPricePopup(event, 'LEVIATHAN', ['60K (Permanen)', '30K (1 Bulan)'])">
+                Harga
+            </div>
+            <p>14 Home<br>500K Money<br>20K Claim<br>8x Jobs & Quest<br>/feed<br>/heal<br>/craft<br>/fly<br>/nick<br>/repair<br>/craft<br>/itemname</p>
+        </div>
+        <div class="rank" onclick="toggleDetails(this)">
+            <h2>🎁 ABYSAL</h2>
+            <div class="price-menu" onclick="showPricePopup(event, 'ABYSAL', ['120K (Permanen)', '60K (1 Bulan)'])">
+                Harga
+            </div>
+            <p>15 Home<br>500K Money<br>25K Claim<br>10x Jobs & Quest<br>/feed<br>/heal<br>/craft<br>/fly<br>/nick<br>/repair<br>/repair all<br>/craft<br>/enderchest<br>/enchant<br>/itemname</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; RealityProjects 2024 | Coding: Lax</p>
+    </footer>
+    <audio id="clickSound" src="sound_klik.mp3" preload="auto"></audio>
+
+    <!-- Discord Button -->
+    <div class="discord-button" onclick="window.open('https://discord.com/invite/4WTPMwqeHb', '_blank')">
+        <img src="dc.png" alt="Discord">
+    </div>
+
+    <!-- Price Popup -->
+    <div id="pricePopup" class="price-popup"></div>
+
+    <script>
+        function toggleDetails(rankElement) {
+            rankElement.classList.toggle('active');
+            document.getElementById('clickSound').play();
+        }
+
+        function showPricePopup(event, rankName, prices) {
+            event.stopPropagation(); // Prevent toggleDetails from being triggered
+
+            const pricePopup = document.getElementById('pricePopup');
+            pricePopup.innerHTML = `<strong>${rankName}</strong><br>` + prices.map(price => `<span>${price}</span>`).join('');
+            pricePopup.style.display = 'block';
+        }
+
+        // Hide price popup when clicking outside
+        document.addEventListener('click', function(event) {
+            const pricePopup = document.getElementById('pricePopup');
+            if (!event.target.closest('.price-menu')) {
+                pricePopup.style.display = 'none';
+            }
+        });
+    </script>
+           <!--
+    Kredit:
+    Pembangun: Lax
+    Desainer: Laxee
+    Konten: LAXEEWHO?
+
+    Catatan: Website ini dilindungi dari phising, hacking, dan ancaman. Pelaporan yang tidak berdasar akan ditindak tegas.
+    -->
+</body>
+</html>
